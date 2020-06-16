@@ -1,8 +1,8 @@
 
 var timerEl = document.getElementById("countdown");
-
+var button = document.querySelector(".button");
   
-  function prepareRead() {
+  function startQuiz() {
     var timeLeft = 60;
   
     var timeInterval = setInterval(function () {
@@ -16,4 +16,5 @@ var timerEl = document.getElementById("countdown");
       }
     }, 1000);
 }
-prepareRead();
+
+button.addEventListener("click", startQuiz);
