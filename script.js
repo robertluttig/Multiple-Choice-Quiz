@@ -3,6 +3,7 @@ var timerEl = document.getElementById("countdown");
 var button = document.querySelector(".button");
   
   function startQuiz() {
+    event.preventDefault();
     var timeLeft = 60;
   
     var timeInterval = setInterval(function () {
