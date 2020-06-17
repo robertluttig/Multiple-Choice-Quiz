@@ -1,7 +1,8 @@
 
 var timerEl = document.getElementById("countdown");
 var button = document.querySelector(".btn");
-
+var pElement = document.createElement("p");
+var inputEl = document.createElement("input");
 
 button.addEventListener("click",function(event) {
     event.preventDefault();
