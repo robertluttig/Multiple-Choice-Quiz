@@ -1,9 +1,11 @@
 
 var timerEl = document.getElementById("countdown");
-var button = document.querySelector(".button");
-  
-  function startQuiz() {
+var button = document.querySelector(".btn");
+
+
+button.addEventListener("click",function(event) {
     event.preventDefault();
+  
     var timeLeft = 60;
   
     var timeInterval = setInterval(function () {
@@ -16,6 +18,4 @@ var button = document.querySelector(".button");
         speedRead();
       }
     }, 1000);
-}
-
-button.addEventListener("click", startQuiz);
+});
