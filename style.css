@@ -1,12 +1,7 @@
 
-*, * ::before, * ::after {
-    box-sizing: border-box;
-    font-family: 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
-  }
+
   :root {
     --hue-neutral: 200;
-    --hue-wrong: 0;
-    --hue-correct: 145;
   }
   body {
     --hue: var(--hue-neutral);
@@ -19,12 +14,7 @@
     align-items: center;
     background-color: hsl(var(--hue), 100%, 20%);
   }
-  body.correct {
-    --hue: var(--hue-correct);
-  }
-  body.wrong {
-    --hue: var(--hue-wrong);
-  }
+ 
   .container {
     width: 800px;
     max-width: 80%;
@@ -51,24 +41,4 @@
   .btn:hover {
     border-color: black;
   }
-  .btn.correct {
-    --hue: var(--hue-correct);
-    color: black;
-  }
-  .btn.wrong {
-    --hue: var(--hue-correct);
-  }
-  .start-btn, .next-btn {
-    font-size: 1.5rem;
-    font-weight: bold;
-    padding: 10px 20px;
-  }
-  .controls {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .hide {
-    display: none;
-  }
-  
+ 
