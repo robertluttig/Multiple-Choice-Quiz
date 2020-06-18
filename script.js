@@ -4,8 +4,8 @@ var startButton = document.querySelector("#btn");
 
 var questions = [ 
   {
-    question: "What is my first question?",
-    choices: [],
+    question: "What is an Array?",
+    choices: ["An ordered collection of elements"],
     answer: "",
   },
   {
@@ -37,8 +37,12 @@ console.log(questions[0].question);
 function codeQuestions(){
   var pElement = document.createElement("p");
   var inputEl = document.createElement("input");
+  inputEl.setAttribute("type", "radio");
   var pMain = document.querySelector(".main");
   pMain.appendChild(pElement)
+  pElement.textContent = questions[0].question;
+  pMain.appendChild(inputEl);
+  inputEl.textContent = questions[0].choices[0];
 }
 
 //render quiz function
