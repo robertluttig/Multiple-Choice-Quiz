@@ -1,65 +1,46 @@
+//Quiz state
+var time =  15;
+var timerId;
 
-var timerEl = document.getElementById("countdown");
-var startButton = document.querySelector("#btn");
+//DOM element reference
+var startBtn = document.getElementById("start");
+var questionsEl = document.getElementById("questions");
+var timerEl = document.getElementById("time");
 
-var questions = [ 
-  {
-    question: "What is an Array?",
-    choices: ["An ordered collection of elements"],
-    answer: "",
-  },
-  {
-    question: "What is my second question?",
-    choices: [],
-    answer: "",
-  }
-]
+function startQuiz() {
+  // hide start screen
+  var startScreenEl = document.getElementById("start-screen");
+  startScreenEl.setAttribute("class", "hide");
 
-startButton.addEventListener("click",function(event) {
-    event.preventDefault();
-  
-    var timeLeft = 60;
-  
-    var timeInterval = setInterval(function () {
-      timerEl.textContent = timeLeft + "Time";
-      timeLeft--;
-  
-      if (timeLeft === 0) {
-        clearInterval(timeInterval);
-        timerEl.textContent = "Game Over";
-      }
-    }, 1000);
-    codeQuestions();
-});
+  // un-hide questions section
+  questionsEl.removeAttribute("class");
 
-console.log(questions[0].question);
+  // start timer
+  timerId = setInterval(clockTick, 1000);
 
-function codeQuestions(){
-  var pElement = document.createElement("p");
-  var inputEl = document.createElement("input");
-  inputEl.setAttribute("type", "radio");
-  var pMain = document.querySelector(".main");
-  pMain.appendChild(pElement)
-  pElement.textContent = questions[0].question;
-  pMain.appendChild(inputEl);
-  inputEl.textContent = questions[0].choices[0];
+  // show starting time
+  timerEl.textContent = time;
 }
 
-//render quiz function
-//add class to div element
-//create p element
-// create text content "question"
-//create input elements with attributes append to p element
-//append p element to div element
-//call render quiz inside of eventlistener function line 23 
+function quizEnd(){
+   // stop timer
+   clearInterval(timerId);
 
-// check user answer function
-//var useranswer
-//add eventlistern to answer
-//store user answer
-// if else check answer
-//if correct shows correct message
-//if wrong shows wrong message
-//deduct 10seconds from timer
+   // show end screen
+   var endScreenEl = document.getElementById("end-screen");
+   endScreenEl.removeAttribute("class");
+}
 
-// call function inside of eventlistener function
+function clockTick() {
+  // update time
+  time--;
+  timerEl.textContent = time;
+
+  // check if user ran out of time
+  if (time <= 0) {
+    quizEnd();
+  }
+}
+
+// user clicks button to start quiz
+startBtn.onclick = startQuiz;
