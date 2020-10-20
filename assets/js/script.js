@@ -1,7 +1,8 @@
 //Quiz state
 var currentQuestionIndex = 0;
-var time =  5;
+var time =  questions.length * 15;
 var timerId;
+
 
 //DOM element reference
 var startBtn = document.getElementById("start");
@@ -46,10 +47,16 @@ function getQuestion(){
 
     choiceNode.textContent = i + 1 + ". " + choice;
 
-   
+    // attach click event listener to each choice
+    choiceNode.onclick = questionClick;
+
     // display on the page
     choicesEl.appendChild(choiceNode);
   });
+}
+
+function questionClick(){
+
 }
 
 function quizEnd(){
