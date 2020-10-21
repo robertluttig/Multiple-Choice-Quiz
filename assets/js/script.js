@@ -9,6 +9,9 @@ var startBtn = document.getElementById("start");
 var questionsEl = document.getElementById("questions");
 var timerEl = document.getElementById("time");
 var choicesEl = document.getElementById("choices");
+var submitBtn = document.getElementById("submit");
+var initialsEl = document.getElementById("initials");
+var feedbackEl = document.getElementById("feedback");
 
 function startQuiz() {
   // hide start screen
@@ -55,8 +58,45 @@ function getQuestion(){
   });
 }
 
-function questionClick(){
+function questionClick() {
+  // check if user guessed wrong
+  if (this.value !== questions[currentQuestionIndex].answer) {
+    // penalize time
+    time -= 15;
 
+    if (time < 0) {
+      time = 0;
+    }
+
+    // display new time on page
+    timerEl.textContent = time;
+
+    // play "wrong" sound effect
+    
+
+    feedbackEl.textContent = "Wrong!";
+  } else {
+    // play "right" sound effect
+    
+
+    feedbackEl.textContent = "Correct!";
+  }
+
+  // flash right/wrong feedback on page for half a second
+  feedbackEl.setAttribute("class", "feedback");
+  setTimeout(function () {
+    feedbackEl.setAttribute("class", "feedback hide");
+  }, 1000);
+
+  // move to next question
+  currentQuestionIndex++;
+
+  // check if we've run out of questions
+  if (currentQuestionIndex === questions.length) {
+    quizEnd();
+  } else {
+    getQuestion();
+  }
 }
 
 function quizEnd(){
